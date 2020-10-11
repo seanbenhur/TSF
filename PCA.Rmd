@@ -1,0 +1,45 @@
+---
+title: "TASK3 - UNSUPERVISED LEARNING"
+output: html_notebook
+---
+O
+```{r}
+#Load the data from file
+data = read.csv('Iris.csv')
+#peek first few columns
+head(data)
+```
+
+```{r}
+hist(data$SepalWidthCm,breaks=20)
+```
+```{r}
+hist(data$SepalLengthCm,breaks=20)
+```
+```{r}
+hist(data$PetalLengthCm,breaks=20)
+```
+```{r}
+
+hist(data$PetalWidthCm,breaks=20)
+```
+```{r}
+df = data[2:5]
+head(df)
+```
+```{r}
+#pca
+log.df = log(df)
+ir.pca <- prcomp(log.df, center = TRUE,scale = TRUE )
+print(ir.pca)
+```
+```{r}
+summary(ir.pca)
+```
+```{r}
+#lets do pca  agan by diagnolising the covariance matrix but  the results won't change
+df.mat <- as.matrix(log.df)
+cov.mat <- cor(df.mat)
+eigen(cov.mat)
+```
+
